@@ -1,4 +1,5 @@
 import React from "react";
+import { Button, Form } from "semantic-ui-react";
 // import PropTypes from "prop-types";
 import useFormValidation from "./useFormValidation";
 import validateMovieSearchForm from "./validateMovieSearchForm";
@@ -19,8 +20,9 @@ const MovieSearchForm = () => {
   } = useFormValidation(INITIAL_STATE, validateMovieSearchForm, searchByTitle);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
+    <Form onSubmit={handleSubmit}>
+      <Form.Field>
+        <label>Movie Title</label>
         <input
           name="title"
           placeholder="Title"
@@ -31,13 +33,15 @@ const MovieSearchForm = () => {
           className={errors.title && "error-input"}
         />
         {errors.title && <p className="error-text">{errors.title}</p>}
-      </div>
-      <div>
-        <button type="submit" disabled={isSubmitting}>
-          Search
-        </button>
-      </div>
-    </form>
+      </Form.Field>
+
+      <Button
+        type="submit"
+        disabled={isSubmitting || Object.keys(errors).length > 0}
+      >
+        Search
+      </Button>
+    </Form>
   );
 };
 
