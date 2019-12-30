@@ -64,3 +64,7 @@ I have created a request service that will handle all of the complicated stuff n
 #### Forms
 
 I will not be using a form library like `formik` or `redux-form`, instead, I'll just use react hooks. The forms should be able to validate user input, handle submission and any errors. The form should also be able to pass the result to another component.
+
+I did use a guide and I to check it out. Click [here](https://www.youtube.com/watch?v=8yo44xN7-nQ&t=710s)
+
+In a nutshell, this guide pulls all the basic functionallity out of the `formik` library. In the end, I probably should have just used formik, but it was a learning experience for me.

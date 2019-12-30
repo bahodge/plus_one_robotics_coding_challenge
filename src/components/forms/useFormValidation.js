@@ -5,9 +5,7 @@ const useFormValidation = (initialState, validate, action) => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setSubmitting] = useState(false);
 
-  const performAction = async () => {
-    return await action(values);
-  };
+  const performAction = async () => await action(values);
 
   useEffect(() => {
     if (isSubmitting) {
