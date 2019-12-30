@@ -1,0 +1,54 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(rgb(255, 255, 255), rgb(189, 185, 185));
+  height: 100vh;
+  font-family: Verdana, Geneva, sans-serif;
+  color: white;
+  text-align: center;
+}
+
+h1 {
+  font-weight: 100;
+  font-size: 3rem;
+  letter-spacing: 0.02em;
+  margin-bottom: 0;
+}
+
+.container {
+  margin: 0 auto;
+  width: 500px;
+}
+
+input {
+  max-width: 500px;
+  width: 50%;
+  border-radius: 5px;
+  margin-top: 0.5em;
+  padding: 5px;
+  border: 1px solid black;
+}
+
+button {
+  background: rgb(41, 110, 150);
+  font-size: 1rem;
+  color: white;
+  border-radius: 5px;
+  margin: 1em;
+  padding: 0.2em 0.5em;
+}
+
+.error-input {
+  max-width: 500px;
+  width: 50%;
+  border-radius: 5px;
+  border: 2px solid red;
+}
+
+.error-text {
+  margin: 0.25em 0 0 0;
+  padding: 0;
+  color: red;
+  font-style: bold;
+  font-size: 1.2rem;
+}
