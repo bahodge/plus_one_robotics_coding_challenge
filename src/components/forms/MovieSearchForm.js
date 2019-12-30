@@ -1,38 +1,44 @@
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import useFormValidation from "./useFormValidation";
 import validateMovieSearchForm from "./validateMovieSearchForm";
+import { searchByTitle } from "../../services/request_service";
 
 const INITIAL_STATE = {
   title: ""
 };
 
-const MovieSearchForm = props => {
-  const { handleChange, values } = useFormValidation(INITIAL_STATE);
-
-  const handleSubmit = event => {
-    event.preventDefault();
-
-    console.log("useValidationHook", values.title);
-  };
+const MovieSearchForm = () => {
+  const {
+    handleSubmit,
+    handleChange,
+    values,
+    handleBlur,
+    errors,
+    isSubmitting
+  } = useFormValidation(INITIAL_STATE, validateMovieSearchForm, searchByTitle);
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        name="title"
-        placeholder="Title"
-        autoComplete="off"
-        onChange={handleChange}
-        value={values.title}
-        // className={errors.email && "error-input"}
-        // autoComplete="off"
-        // placeholder="Your email address"
-      />
-      {/* {errors.email && <p className="error-text">{errors.email}</p>} */}
+      <div>
+        <input
+          name="title"
+          placeholder="Title"
+          autoComplete="off"
+          onChange={handleChange}
+          value={values.title}
+          onBlur={handleBlur}
+          className={errors.title && "error-input"}
+        />
+        {errors.title && <p className="error-text">{errors.title}</p>}
+      </div>
+      <div>
+        <button type="submit" disabled={isSubmitting}>
+          Search
+        </button>
+      </div>
     </form>
   );
 };
-
-MovieSearchForm.propTypes = {};
 
 export default MovieSearchForm;
