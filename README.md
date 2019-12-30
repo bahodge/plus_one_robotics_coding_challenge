@@ -7,7 +7,7 @@ This coding challenge is meant to fulfill the following requirements
 - [ ] Allow a user to perform an informed action based on this data
 - [ ] Please provide documentation on setup and usage
 - [ ] Have tests **(optional)**
-- [ ] Incorporated in docker pipeline **(optional)**
+- [x] Incorporated in docker pipeline **(optional)**
 - [ ] Public hosted for immediate viewing **(optional)**
 
 ## Tech Stack
