@@ -1,9 +1,9 @@
 // This service will handle the complication of making api calls and exposing an easy to use api.
 import fetch from "node-fetch";
+import { dispatchAddResultToSearchHistory } from "../redux/dispatcher";
 
 const headers = {
   Accept: "*/*"
-  // "Content-Type": "application/json"
 };
 
 const baseOmdbApiEndpoint = process.env.REACT_APP_BASE_OMDB_API_ENDPOINT;
@@ -19,7 +19,7 @@ const searchByTitle = async ({ title }) => {
 
   return await fetch(requestUrl, requestHeaders)
     .then(res => res.json())
-    .then(json => console.log(json))
+    .then(json => dispatchAddResultToSearchHistory(json.Title, json))
     .catch(error => error);
 };
 

@@ -30,9 +30,8 @@ const MovieSearchForm = () => {
           onChange={handleChange}
           value={values.title}
           onBlur={handleBlur}
-          className={errors.title && "error-input"}
         />
-        {errors.title && <p className="error-text">{errors.title}</p>}
+        {errors.title && <p>{errors.title}</p>}
       </Form.Field>
 
       <Button
