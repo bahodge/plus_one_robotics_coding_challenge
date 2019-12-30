@@ -1,0 +1,5 @@
+.git
+.idea 
+# just in case ^
+node_modules
+build

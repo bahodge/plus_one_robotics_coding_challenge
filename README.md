@@ -1,68 +1,34 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Plus One Robotics Coding Challenge
 
-## Available Scripts
+This coding challenge is meant to fulfill the following requirements
 
-In the project directory, you can run:
+- [ ] Develop a single-page web application
+- [ ] Pull data from an api or public resource
+- [ ] Allow a user to perform an informed action based on this data
+- [ ] Please provide documentation on setup and usage
+- [ ] Have tests **(optional)**
+- [ ] Incorporated in docker pipeline **(optional)**
+- [ ] Public hosted for immediate viewing **(optional)**
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- NodeJS `v13.0.0`
+- NPM `v6.12.0`
+- Create React App `v3.3.0`
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Application Overview
 
-### `npm test`
+This application will use a few different APIs.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Running the Application
 
-### `npm run build`
+The following workflow will build a production version of the application.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- `docker build . -t bahodge/plus_one_robotics_coding_challenge`
+- `docker run -p 8080:80 bahodge/plus_one_robotics_coding_challenge:latest`
+- [localhost:8080](http://localhost:8080)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+The following workflow will build the application for development
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- `npm install`
+- `npm start`
