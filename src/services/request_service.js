@@ -13,13 +13,13 @@ const searchByTitle = async ({ title }) => {
   const requestUrl = `${baseOmdbApiEndpoint}?apiKey=${omdbApiKey}&t=${title}`;
   const requestHeaders = {
     headers: headers,
-    method: "GET",
+    method: "POST",
     credentials: "same-origin"
   };
 
   return await fetch(requestUrl, requestHeaders)
     .then(res => res.json())
-    .then(json => json)
+    .then(json => console.log(json))
     .catch(error => error);
 };
 
