@@ -6,19 +6,23 @@ const headers = {
   "Content-Type": "application/json"
 };
 
-const baseApiEndpoint = process.env.REACT_APP_BASE_API_ENDPOINT;
+const baseOmdbApiEndpoint = process.env.REACT_APP_BASE_OMDB_API_ENDPOINT;
+const omdbApiKey = process.env.REACT_APP_OMDB_API_KEY;
 
-const searchText = async () => {
-  const requestUrl = `${baseApiEndpoint}`;
+const searchByTitle = async title => {
+  const requestUrl = `${baseOmdbApiEndpoint}?apiKey=${omdbApiKey}&t=${title}`;
   const requestHeaders = {
     headers: headers,
     method: "GET",
     credentials: "same-origin"
   };
 
+  console.log(requestUrl);
+  console.log(requestHeaders);
+
   return await fetch(requestUrl, requestHeaders)
     .then(res => console.log(res))
     .catch(error => error);
 };
 
-export { searchText };
+export { searchByTitle };

@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
-import { searchText } from "./services/request_service";
+import { searchByTitle } from "./services/request_service";
 
-searchText();
+searchByTitle("cats");
 
 function App() {
   return <div className="App">Hello there</div>;
