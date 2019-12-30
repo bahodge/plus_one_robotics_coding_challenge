@@ -2,8 +2,8 @@
 import fetch from "node-fetch";
 
 const headers = {
-  Accept: "*/*",
-  "Content-Type": "application/json"
+  Accept: "*/*"
+  // "Content-Type": "application/json"
 };
 
 const baseOmdbApiEndpoint = process.env.REACT_APP_BASE_OMDB_API_ENDPOINT;
@@ -17,11 +17,9 @@ const searchByTitle = async title => {
     credentials: "same-origin"
   };
 
-  console.log(requestUrl);
-  console.log(requestHeaders);
-
   return await fetch(requestUrl, requestHeaders)
-    .then(res => console.log(res))
+    .then(res => res.json())
+    .then(json => console.log(json))
     .catch(error => error);
 };
 
