@@ -13,7 +13,7 @@ const useFormValidation = (initialState, validate, action) => {
       if (hasErrors) {
         setSubmitting(false);
       } else {
-        console.log("useValidationHook", values.title);
+        console.log("Form Values", values);
         if (action) {
           performAction();
         }
