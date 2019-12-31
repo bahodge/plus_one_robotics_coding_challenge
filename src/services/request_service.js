@@ -19,7 +19,15 @@ const searchByTitle = async ({ title }) => {
 
   return await fetch(requestUrl, requestHeaders)
     .then(res => res.json())
-    .then(json => dispatchAddResultToSearchHistory(json.Title, json))
+    .then(json => {
+      if (json.hasOwnProperty("Response") && json.Response === "False") {
+        console.log("No Results", json);
+        // should set the search result to display the error
+      } else if (json.Title) {
+        return dispatchAddResultToSearchHistory(json.Title, json);
+        // should set search result to display the movie info
+      }
+    })
     .catch(error => error);
 };
 
