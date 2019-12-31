@@ -2,7 +2,10 @@
 import fetch from "node-fetch";
 // import { dispatchAddResultToSearchHistory } from "../redux/dispatcher";
 
-import { dispatchAddToSearchResult } from "../redux/dispatcher";
+import {
+  dispatchAddToSearchResult,
+  dispatchClearSearchResult
+} from "../redux/dispatcher";
 
 const headers = {
   Accept: "*/*"
@@ -22,6 +25,8 @@ const searchByTitle = async ({ title }) => {
   return await fetch(requestUrl, requestHeaders)
     .then(res => res.json())
     .then(json => {
+      dispatchClearSearchResult();
+
       if (json.hasOwnProperty("Response") && json.Response === "False") {
         console.log("No Results", json);
         // should set the search result to display the error
