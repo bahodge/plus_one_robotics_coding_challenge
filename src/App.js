@@ -13,6 +13,7 @@ function App() {
     const { searchResult } = store.getState();
     setSearchResult(searchResult);
   });
+
   return (
     <Container>
       <Segment>

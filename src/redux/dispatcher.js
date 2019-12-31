@@ -1,15 +1,12 @@
 import { store } from "./store";
-// import { addResultToSearchHistory } from "./actions";
-import { addToSearchResult } from "./actions";
-
-// const dispatchAddResultToSearchHistory = (term, searchResult) => {
-//   return store.dispatch(addResultToSearchHistory(term, searchResult));
-// };
+import { addToSearchResult, clearSearchResult } from "./actions";
 
 const dispatchAddToSearchResult = searchResult => {
   return store.dispatch(addToSearchResult(searchResult));
 };
 
-// export { dispatchAddResultToSearchHistory, dispatchAddToSearchResult }
+const dispatchClearSearchResult = () => {
+  return store.dispatch(clearSearchResult());
+};
 
-export { dispatchAddToSearchResult };
+export { dispatchAddToSearchResult, dispatchClearSearchResult };
