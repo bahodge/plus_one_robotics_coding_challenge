@@ -8,6 +8,5 @@ export default values => {
   if (!sanitizedValues.title || sanitizedValues.title === "") {
     errors.title = "Required";
   }
-
   return errors;
 };

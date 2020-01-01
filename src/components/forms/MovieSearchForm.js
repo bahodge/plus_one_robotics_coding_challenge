@@ -1,6 +1,5 @@
 import React from "react";
 import { Button, Form } from "semantic-ui-react";
-// import PropTypes from "prop-types";
 import useFormValidation from "./useFormValidation";
 import validateMovieSearchForm from "./validateMovieSearchForm";
 import { searchByTitle, getTheaters } from "../../services/request_service";
@@ -26,7 +25,7 @@ const MovieSearchForm = () => {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Field>
-        <label>Movie Title</label>
+        <label>Movie Title *</label>
         <input
           name="title"
           placeholder="Title"
@@ -35,7 +34,9 @@ const MovieSearchForm = () => {
           value={values.title}
           onBlur={handleBlur}
         />
-
+        {errors.title && <p>{errors.title}</p>}
+      </Form.Field>
+      <Form.Field>
         <label>Zip Code</label>
         <input
           name="zipcode"
