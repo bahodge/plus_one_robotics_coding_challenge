@@ -4,6 +4,7 @@ import "semantic-ui-css/semantic.min.css";
 
 import MovieSearchForm from "./components/forms/MovieSearchForm";
 import SearchResult from "./components/search_results/SearchResult";
+import TheaterResults from "./components/theater_results/TheaterResults";
 import { store } from "./redux/store";
 
 function App() {
@@ -19,7 +20,14 @@ function App() {
       <Segment>
         <Grid columns={2}>
           <Grid.Column>
-            <MovieSearchForm />
+            <Grid.Row>
+              <MovieSearchForm />
+            </Grid.Row>
+            <Grid.Row style={{ marginTop: "1rem" }}>
+              <Grid.Column>
+                <TheaterResults />
+              </Grid.Column>
+            </Grid.Row>
           </Grid.Column>
           <Grid.Column>
             <SearchResult searchResult={searchResult} />
