@@ -6,7 +6,8 @@ import validateMovieSearchForm from "./validateMovieSearchForm";
 import { searchByTitle, getTheaters } from "../../services/request_service";
 
 const INITIAL_STATE = {
-  title: ""
+  title: "",
+  zipcode: ""
 };
 
 const MovieSearchForm = () => {
@@ -35,7 +36,18 @@ const MovieSearchForm = () => {
           onBlur={handleBlur}
         />
 
-        {errors.title && <p>{errors.title}</p>}
+        <label>Zip Code</label>
+        <input
+          name="zipcode"
+          type="number"
+          placeholder="Zip Code"
+          autoComplete="off"
+          onChange={handleChange}
+          value={values.zipcode}
+          onBlur={handleBlur}
+        />
+
+        {errors.zipcode && <p>{errors.zipcode}</p>}
       </Form.Field>
 
       <Button

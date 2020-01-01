@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { sanitizeStrings } from "./FormSanitizer";
+import { sanitizeStrings, sanitizeIntegers } from "./FormSanitizer";
 
 const useFormValidation = (initialState, validate, actions) => {
   const [values, setValues] = useState(initialState);
@@ -19,6 +19,7 @@ const useFormValidation = (initialState, validate, actions) => {
       } else {
         // This becomes super easy to chain multiple methods together
         let sanitizedValues = sanitizeStrings(values);
+        sanitizedValues = sanitizeIntegers(sanitizedValues);
         console.log("Sanitized Form Values", sanitizedValues);
         if (actions.length > 0) {
           performActions(sanitizedValues);
