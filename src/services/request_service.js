@@ -1,6 +1,8 @@
 // This service will handle the complication of making api calls and exposing an easy to use api.
 import fetch from "node-fetch";
-import { dispatchAddResultToSearchHistory } from "../redux/dispatcher";
+// import { dispatchAddResultToSearchHistory } from "../redux/dispatcher";
+
+import { dispatchAddToSearchResult } from "../redux/dispatcher";
 
 const headers = {
   Accept: "*/*"
@@ -23,8 +25,9 @@ const searchByTitle = async ({ title }) => {
       if (json.hasOwnProperty("Response") && json.Response === "False") {
         console.log("No Results", json);
         // should set the search result to display the error
-      } else if (json.Title) {
-        return dispatchAddResultToSearchHistory(json.Title, json);
+      } else if (json.hasOwnProperty("Title")) {
+        dispatchAddToSearchResult(json);
+        // return dispatchAddResultToSearchHistory(json.Title, json);
         // should set search result to display the movie info
       }
     })
