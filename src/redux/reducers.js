@@ -6,7 +6,6 @@ export const searchHistories = (state = {}, action) => {
     case ADD_TO_SEARCH_RESULT:
       state.searchResult = action.searchResult;
       return state;
-      break;
     default:
       return state;
   }

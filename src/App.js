@@ -4,12 +4,15 @@ import "semantic-ui-css/semantic.min.css";
 
 import MovieSearchForm from "./components/forms/MovieSearchForm";
 import SearchResult from "./components/search_results/SearchResult";
-// import { store } from "./redux/store";
-// import SearchHistorySideBar from "./components/search_history/SearchHistorySideBar";
-
-// store.subscribe(() => console.log(store.getState().searchResult));
+import { store } from "./redux/store";
 
 function App() {
+  const [searchResult, setSearchResult] = useState(null);
+
+  store.subscribe(() => {
+    const { searchResult } = store.getState();
+    setSearchResult(searchResult);
+  });
   return (
     <Container>
       <Segment>
@@ -18,7 +21,7 @@ function App() {
             <MovieSearchForm />
           </Grid.Column>
           <Grid.Column>
-            <SearchResult />
+            <SearchResult searchResult={searchResult} />
           </Grid.Column>
         </Grid>
       </Segment>
