@@ -44,7 +44,7 @@ const SearchResult = props => {
               <List>
                 {Ratings.map(({ Source, Value }, idx) => (
                   <List.Item key={idx}>
-                    <strong>{Source}</strong> - {Value}
+                    <strong>{Source}</strong>: {Value}
                   </List.Item>
                 ))}
               </List>
