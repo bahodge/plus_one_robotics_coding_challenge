@@ -1,4 +1,4 @@
-FROM node:13.0.0 as build-deps
+FROM node:12.14.0 as build-deps
 WORKDIR /app
 COPY . ./
 RUN npm install --silent
