@@ -1,9 +1,11 @@
 import React from "react";
-import { Segment, Header, Grid } from "semantic-ui-react";
-import { store } from "../../redux/store";
+import { Segment, Header } from "semantic-ui-react";
 import SearchHistorySideBarItems from "./SearchHistorySideBarItems";
 
+import { connect } from "react-redux";
+
 const SearchHistorySideBar = props => {
+  console.log(props);
   return (
     <Segment>
       <Header as="h3">Search History</Header>
@@ -13,4 +15,8 @@ const SearchHistorySideBar = props => {
   );
 };
 
-export default SearchHistorySideBar;
+const mapStateToProps = state => {
+  return state;
+};
+
+export default connect(mapStateToProps)(SearchHistorySideBar);

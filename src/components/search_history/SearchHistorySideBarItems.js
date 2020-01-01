@@ -1,10 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const SearchHistorySideBarItems = () => {
+const SearchHistorySideBarItems = props => {
+  console.log(props);
   return <div>Hello</div>;
 };
-
-SearchHistorySideBarItems.propTypes = {};
 
 export default SearchHistorySideBarItems;
