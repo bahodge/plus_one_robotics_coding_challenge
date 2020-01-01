@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
+import { sanitizeStrings } from "./FormSanitizer";
 
 const useFormValidation = (initialState, validate, action) => {
   const [values, setValues] = useState(initialState);
   const [errors, setErrors] = useState({});
   const [isSubmitting, setSubmitting] = useState(false);
 
-  const performAction = async () => await action(values);
+  const performAction = async formValues => await action(formValues);
 
   useEffect(() => {
     if (isSubmitting) {
@@ -13,9 +14,11 @@ const useFormValidation = (initialState, validate, action) => {
       if (hasErrors) {
         setSubmitting(false);
       } else {
-        console.log("Form Values", values);
+        // This becomes super easy to chain multiple methods together
+        let sanitizedValues = sanitizeStrings(values);
+        console.log("Sanitized Form Values", sanitizedValues);
         if (action) {
-          performAction();
+          performAction(sanitizedValues);
         }
         setSubmitting(false);
       }

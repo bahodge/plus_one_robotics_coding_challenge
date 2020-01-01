@@ -1,7 +1,11 @@
+import { sanitizeStrings } from "./FormSanitizer";
+
 export default values => {
   let errors = {};
 
-  if (!values.title || values.title === "") {
+  let sanitizedValues = sanitizeStrings(values);
+
+  if (!sanitizedValues.title || sanitizedValues.title === "") {
     errors.title = "Required";
   }
 
