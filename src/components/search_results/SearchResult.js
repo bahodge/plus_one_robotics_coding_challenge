@@ -9,7 +9,6 @@ const SearchResult = props => {
   if (searchResult) {
     const {
       Title,
-      Year,
       Rated,
       Released,
       Runtime,
