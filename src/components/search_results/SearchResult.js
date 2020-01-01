@@ -2,9 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Grid, Header, List, Image } from "semantic-ui-react";
 
-const SearchResult = props => {
-  const { searchResult } = props;
-  console.log("SearchResult Props", searchResult);
+const SearchResult = ({ searchResult }) => {
+  console.log("SearchResult", searchResult);
 
   if (searchResult) {
     const {
