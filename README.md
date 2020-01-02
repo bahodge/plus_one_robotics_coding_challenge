@@ -87,6 +87,12 @@ Implemented my own custom hook to handle form validation and submission. Check o
 
 Work Time: 3hrs
 
-### Day 2
+## Day 2
 
 I fixed up a few warnings related to the version of node and switched to node `12.14.0`. I also implemented form sanitizing which is composeable. I have also still not been able to find a free movie showtime API and therefore will be faking it. I will be using google's geolocation and places search.
+
+So after fighting google's cors policy for like 2 hours, I finally found a work around. I am essentially routing the request to a website with cors and SSL and all that stuff enabled already which then sends the request to google. I'm not super familiar with cors so this was the fastest way for me to do it. Without standing up a website. The problem that has arisen is that when you do not pass a location, google's places api will use the IP of the requestor. This means that since the rerouter website is located in VA that it will then only search for theaters in that region. This can be overridden by submitting a zip code, but it is just annoying at the moment.
+
+Because the react side is very simple, I am only going to be adding tests to the dangerous parts, like requesting data.
+
+Work Time: 5 hours
