@@ -2,12 +2,12 @@
 
 This coding challenge is meant to fulfill the following requirements
 
-- [ ] Develop a single-page web application
+- [x] Develop a single-page web application
 - [x] Pull data from an api or public resource
-- [ ] Allow a user to perform an informed action based on this data
-- [ ] Please provide documentation on setup and usage
-- [ ] Have tests **(optional)**
+- [x] Allow a user to perform an informed action based on this data
+- [x] Please provide documentation on setup and usage
 - [x] Incorporated in docker pipeline **(optional)**
+- [ ] Have tests **(optional)**
 - [ ] Public hosted for immediate viewing **(optional)**
 
 ## Tech Stack
