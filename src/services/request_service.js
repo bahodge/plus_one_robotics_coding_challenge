@@ -4,7 +4,9 @@ import zipcodes from "zipcodes";
 
 import {
   dispatchAddToSearchResult,
-  dispatchClearSearchResult
+  dispatchClearSearchResult,
+  dispatchClearTheaterResults,
+  dispatchSetTheaterResults
 } from "../redux/dispatcher";
 
 const headers = {
@@ -13,6 +15,7 @@ const headers = {
   // "Access-Control-Allow-Origin": "http://localhost:3000"
 };
 
+// This url basically attaches cors to the request
 const corsHackUrl = "https://cors-anywhere.herokuapp.com/";
 const baseOmdbApiEndpoint = process.env.REACT_APP_BASE_OMDB_API_ENDPOINT;
 const omdbApiKey = process.env.REACT_APP_OMDB_API_KEY;
@@ -31,14 +34,8 @@ const searchByTitle = async ({ title }) => {
     .then(res => res.json())
     .then(json => {
       dispatchClearSearchResult();
-
-      if (json.hasOwnProperty("Response") && json.Response === "False") {
-        console.log("No Results", json);
-        // should set the search result to display the error
-      } else if (json.hasOwnProperty("Response") && json.Response === "True") {
+      if (json.hasOwnProperty("Response") && json.Response === "True") {
         dispatchAddToSearchResult(json);
-        // return dispatchAddResultToSearchHistory(json.Title, json);
-        // should set search result to display the movie info
       }
     })
     .catch(error => error);
@@ -46,56 +43,32 @@ const searchByTitle = async ({ title }) => {
 
 const getTheaters = async formValues => {
   const { zipcode } = formValues;
-
-  // should be able to search with zipcode or without zipcode
-
-  // const zipcode = 78213;
   const { latitude, longitude } = zipcodes.lookup(zipcode) || {};
 
   if (latitude && longitude) {
     return await getNearbyTheaters(latitude, longitude);
   } else {
-    return getTextSearchTheaters();
+    return await getTextSearchTheaters();
   }
 };
 
 const getTextSearchTheaters = async () => {
   const input = "input=movie%20theater";
   const inputType = "inputtype=textquery";
-  const radius = "radius=10000";
+  const radius = "radius=20000";
   const returnFields =
     "fields=formatted_address,name,rating,opening_hours,geometry";
   const requestUrl = `${baseGoogleApiEndpoint}textsearch/json?${input}&${inputType}&${radius}&${returnFields}&key=${googleApiKey}`;
 
-  const headers = {
-    Accept: "*/*",
-    "Access-Control-Allow-Origin": "http://127.0.0.1:3000"
-  };
-
-  // const requestOptions = {
-  //   headers: headers,
-  //   method: "GET",
-  //   // mode: "no-cors"
-  //   // "Access-Control-Allow-Origin": "http://localhost:3000"
-
-  //   credentials: "same-origin"
-  // };
-
-  var requestOptions = {
-    method: "GET",
-    redirect: "follow"
-  };
-
   return await fetch(corsHackUrl + requestUrl)
-    .then(res => {
-      console.log("res", res);
-      return res.json();
-    })
+    .then(res => res.json())
     .then(json => {
-      console.log(json);
-      return json;
+      dispatchClearTheaterResults();
+      if (json.hasOwnProperty("results")) {
+        dispatchSetTheaterResults(json.results);
+      }
     })
-    .catch(error => console.log(error));
+    .catch(error => error);
 };
 
 const getNearbyTheaters = async (latitude, longitude) => {
@@ -108,7 +81,10 @@ const getNearbyTheaters = async (latitude, longitude) => {
   return await fetch(corsHackUrl + requestUrl)
     .then(res => res.json())
     .then(json => {
-      console.log(json);
+      dispatchClearTheaterResults();
+      if (json.hasOwnProperty("results")) {
+        dispatchSetTheaterResults(json.results);
+      }
     })
     .catch(error => error);
 };

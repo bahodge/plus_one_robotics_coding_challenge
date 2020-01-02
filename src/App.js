@@ -9,10 +9,12 @@ import { store } from "./redux/store";
 
 function App() {
   const [searchResult, setSearchResult] = useState(null);
+  const [theaterResults, setTheaterResults] = useState(null);
 
   store.subscribe(() => {
-    const { searchResult } = store.getState();
+    const { searchResult, theaterResults } = store.getState();
     setSearchResult(searchResult);
+    setTheaterResults(theaterResults);
   });
 
   return (
@@ -25,7 +27,7 @@ function App() {
             </Grid.Row>
             <Grid.Row style={{ marginTop: "1rem" }}>
               <Grid.Column>
-                <TheaterResults />
+                <TheaterResults theaterResults={theaterResults} />
               </Grid.Column>
             </Grid.Row>
           </Grid.Column>
