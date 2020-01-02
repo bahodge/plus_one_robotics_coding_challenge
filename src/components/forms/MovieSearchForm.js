@@ -1,12 +1,12 @@
 import React from "react";
 import { Button, Form } from "semantic-ui-react";
-// import PropTypes from "prop-types";
 import useFormValidation from "./useFormValidation";
 import validateMovieSearchForm from "./validateMovieSearchForm";
-import { searchByTitle } from "../../services/request_service";
+import { searchByTitle, getTheaters } from "../../services/request_service";
 
 const INITIAL_STATE = {
-  title: ""
+  title: "",
+  zipcode: ""
 };
 
 const MovieSearchForm = () => {
@@ -17,12 +17,15 @@ const MovieSearchForm = () => {
     handleBlur,
     errors,
     isSubmitting
-  } = useFormValidation(INITIAL_STATE, validateMovieSearchForm, searchByTitle);
+  } = useFormValidation(INITIAL_STATE, validateMovieSearchForm, [
+    searchByTitle,
+    getTheaters
+  ]);
 
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Field>
-        <label>Movie Title</label>
+        <label>Movie Title *</label>
         <input
           name="title"
           placeholder="Title"
@@ -32,6 +35,20 @@ const MovieSearchForm = () => {
           onBlur={handleBlur}
         />
         {errors.title && <p>{errors.title}</p>}
+      </Form.Field>
+      <Form.Field>
+        <label>Zip Code</label>
+        <input
+          name="zipcode"
+          type="number"
+          placeholder="Zip Code"
+          autoComplete="off"
+          onChange={handleChange}
+          value={values.zipcode}
+          onBlur={handleBlur}
+        />
+
+        {errors.zipcode && <p>{errors.zipcode}</p>}
       </Form.Field>
 
       <Button

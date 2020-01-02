@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import { Grid, Header, List, Image } from "semantic-ui-react";
 
 const SearchResult = ({ searchResult }) => {
-  console.log("SearchResult", searchResult);
-
   if (searchResult) {
     const {
       Title,
@@ -21,7 +19,7 @@ const SearchResult = ({ searchResult }) => {
       <Grid>
         <Grid.Row>
           <Grid.Column>
-            <Header as="h4">Title: {Title}</Header>
+            <Header as="h3">Title: {Title}</Header>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row columns={2}>
@@ -73,7 +71,7 @@ const SearchResult = ({ searchResult }) => {
     return (
       <Grid>
         <Grid.Row>
-          <Header as="h4">No Results</Header>
+          <Header as="h3">No Results</Header>
         </Grid.Row>
       </Grid>
     );
