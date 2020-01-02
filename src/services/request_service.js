@@ -32,6 +32,8 @@ const searchByTitle = async ({ title }) => {
       dispatchClearSearchResult();
       if (json.hasOwnProperty("Response") && json.Response === "True") {
         dispatchAddToSearchResult(json);
+      } else {
+        dispatchClearTheaterResults();
       }
     })
     .catch(error => error);

@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import { Grid, Header, List, Image } from "semantic-ui-react";
 
 const SearchResult = ({ searchResult }) => {
-  console.log("SearchResult", searchResult);
-
   if (searchResult) {
     const {
       Title,

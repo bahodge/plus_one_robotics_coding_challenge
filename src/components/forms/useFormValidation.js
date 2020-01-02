@@ -20,7 +20,7 @@ const useFormValidation = (initialState, validate, actions) => {
         // This becomes super easy to chain multiple methods together
         let sanitizedValues = sanitizeStrings(values);
         sanitizedValues = sanitizeIntegers(sanitizedValues);
-        console.log("Sanitized Form Values", sanitizedValues);
+        // console.log("Sanitized Form Values", sanitizedValues);
         if (actions.length > 0) {
           performActions(sanitizedValues);
         }
