@@ -25,7 +25,11 @@ const TheaterResult = ({ theater }) => {
       <Grid.Row>
         <Grid.Column>
           <Header as="h5">
-            <a href={searchUrlForTheater(name)} target="_blank">
+            <a
+              href={searchUrlForTheater(name)}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {name}
             </a>
           </Header>
