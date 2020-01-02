@@ -1,5 +1,5 @@
 import { createStore } from "redux";
-import { searchHistories } from "./reducers";
+import { searchResults } from "./reducers";
 // use combineReducers to combine all the reducers if I end up making multiple
 
-export const store = createStore(searchHistories);
+export const store = createStore(searchResults);
