@@ -18,7 +18,7 @@ function App() {
   });
 
   return (
-    <Container>
+    <Container style={{ marginTop: "3rem" }}>
       <Header as="h1">Movie Search Application</Header>
       <Segment>
         <Grid columns={2}>
