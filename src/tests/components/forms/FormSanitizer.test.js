@@ -1,7 +1,7 @@
 import {
   sanitizeStrings,
   sanitizeIntegers
-} from "../components/forms/FormSanitizer";
+} from "../../../components/forms/FormSanitizer";
 
 // sanitizeStrings
 test("returns an object", () => {
