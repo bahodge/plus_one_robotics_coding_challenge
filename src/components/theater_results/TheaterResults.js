@@ -45,7 +45,7 @@ const TheaterResults = ({ theaterResults }) => {
 };
 
 TheaterResults.propTypes = {
-  theaterResults: PropTypes.array.isRequired
+  theaterResults: PropTypes.array
 };
 
 export default TheaterResults;

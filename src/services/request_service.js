@@ -9,11 +9,7 @@ import {
   dispatchSetTheaterResults
 } from "../redux/dispatcher";
 
-const headers = {
-  Accept: "*/*"
-  // "Access-Control-Allow-Credentials": true,
-  // "Access-Control-Allow-Origin": "http://localhost:3000"
-};
+const basicHeaders = { Accept: "*/*" };
 
 // This url basically attaches cors to the request
 const corsHackUrl = "https://cors-anywhere.herokuapp.com/";
@@ -25,7 +21,7 @@ const googleApiKey = process.env.REACT_APP_GOOGLE_API_KEY;
 const searchByTitle = async ({ title }) => {
   const requestUrl = `${baseOmdbApiEndpoint}?apiKey=${omdbApiKey}&t=${title}`;
   const requestOptions = {
-    headers: headers,
+    headers: basicHeaders,
     method: "POST",
     credentials: "same-origin"
   };
