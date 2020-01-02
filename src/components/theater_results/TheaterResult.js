@@ -14,6 +14,8 @@ const generateRandomTime = id => {
   return `${generatedDate}`;
 };
 
+const searchUrlForTheater = name => `https://www.google.com/search?q=${name}`;
+
 const TheaterResult = ({ theater }) => {
   const { formatted_address, vicinity, name, rating, id } = theater;
 
@@ -22,7 +24,11 @@ const TheaterResult = ({ theater }) => {
     <Grid columns={4}>
       <Grid.Row>
         <Grid.Column>
-          <Header as="h5">{name}</Header>
+          <Header as="h5">
+            <a href={searchUrlForTheater(name)} target="_blank">
+              {name}
+            </a>
+          </Header>
         </Grid.Column>
         <Grid.Column>{rating}</Grid.Column>
         <Grid.Column>{formatted_address || vicinity}</Grid.Column>

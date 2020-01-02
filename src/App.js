@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Grid, Segment } from "semantic-ui-react";
+import { Container, Grid, Segment, Header } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 
 import MovieSearchForm from "./components/forms/MovieSearchForm";
@@ -19,8 +19,15 @@ function App() {
 
   return (
     <Container>
+      <Header as="h1">Movie Search Application</Header>
       <Segment>
         <Grid columns={2}>
+          <Grid.Row>
+            <Grid.Column>
+              <strong>Instructions:</strong> Enter the title of a movie and
+              optionally enter your zip code to find the nearest theater to you.
+            </Grid.Column>
+          </Grid.Row>
           <Grid.Column>
             <Grid.Row>
               <MovieSearchForm />
