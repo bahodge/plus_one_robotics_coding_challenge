@@ -9,8 +9,11 @@ import {
 
 const headers = {
   Accept: "*/*"
+  // "Access-Control-Allow-Credentials": true,
+  // "Access-Control-Allow-Origin": "http://localhost:3000"
 };
 
+const corsHackUrl = "https://cors-anywhere.herokuapp.com/";
 const baseOmdbApiEndpoint = process.env.REACT_APP_BASE_OMDB_API_ENDPOINT;
 const omdbApiKey = process.env.REACT_APP_OMDB_API_KEY;
 const baseGoogleApiEndpoint = process.env.REACT_APP_BASE_GOOGLE_API_ENDPOINT;
@@ -18,13 +21,13 @@ const googleApiKey = process.env.REACT_APP_GOOGLE_API_KEY;
 
 const searchByTitle = async ({ title }) => {
   const requestUrl = `${baseOmdbApiEndpoint}?apiKey=${omdbApiKey}&t=${title}`;
-  const requestHeaders = {
+  const requestOptions = {
     headers: headers,
     method: "POST",
     credentials: "same-origin"
   };
 
-  return await fetch(requestUrl, requestHeaders)
+  return await fetch(requestUrl, requestOptions)
     .then(res => res.json())
     .then(json => {
       dispatchClearSearchResult();
@@ -64,18 +67,50 @@ const getTextSearchTheaters = async () => {
     "fields=formatted_address,name,rating,opening_hours,geometry";
   const requestUrl = `${baseGoogleApiEndpoint}textsearch/json?${input}&${inputType}&${radius}&${returnFields}&key=${googleApiKey}`;
 
-  console.log(requestUrl);
+  const headers = {
+    Accept: "*/*",
+    "Access-Control-Allow-Origin": "http://127.0.0.1:3000"
+  };
+
+  // const requestOptions = {
+  //   headers: headers,
+  //   method: "GET",
+  //   // mode: "no-cors"
+  //   // "Access-Control-Allow-Origin": "http://localhost:3000"
+
+  //   credentials: "same-origin"
+  // };
+
+  var requestOptions = {
+    method: "GET",
+    redirect: "follow"
+  };
+
+  return await fetch(corsHackUrl + requestUrl)
+    .then(res => {
+      console.log("res", res);
+      return res.json();
+    })
+    .then(json => {
+      console.log(json);
+      return json;
+    })
+    .catch(error => console.log(error));
 };
 
 const getNearbyTheaters = async (latitude, longitude) => {
-  console.log(latitude, longitude);
   const location = `location=${latitude},${longitude}&rankby=distance`;
   const type = "type=movie_theater";
   const returnFields =
     "fields=formatted_address,name,rating,opening_hours,geometry";
   const requestUrl = `${baseGoogleApiEndpoint}nearbysearch/json?${location}&${type}&${returnFields}&key=${googleApiKey}`;
 
-  console.log(requestUrl);
+  return await fetch(corsHackUrl + requestUrl)
+    .then(res => res.json())
+    .then(json => {
+      console.log(json);
+    })
+    .catch(error => error);
 };
 
 export { searchByTitle, getTheaters };
